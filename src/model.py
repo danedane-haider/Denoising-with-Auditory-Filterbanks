@@ -8,18 +8,21 @@ class NSNet(nn.Module):
     def __init__(self):
         super().__init__()
 
-        self.linear_before = nn.Linear(42, 400)
+        GRU_size = 400
+        num_channels = 42
+
+        self.linear_before = nn.Linear(num_channels, GRU_size)
 
         self.gru = nn.GRU(
-            input_size=400,
-            hidden_size=400,
+            input_size=GRU_size,
+            hidden_size=GRU_size,
             num_layers=2,
             batch_first=True,
         )
 
-        self.linear_after = nn.Linear(400, 600)
+        self.linear_after = nn.Linear(GRU_size, 600)
         self.linear_after2 = nn.Linear(600, 600)
-        self.linear_after3 = nn.Linear(600, 42)
+        self.linear_after3 = nn.Linear(600, num_channels)
 
 
     def forward(self, x):
@@ -39,8 +42,8 @@ class AUDModel(nn.Module):
         super().__init__()
 
         config = {
-            "filter_len": 128,
-            "num_channels": 42,
+            "filter_len": ,
+            "num_channels": 256,
             "fs": 16000,
             "Ls": 5*16000,
             "bwmul": 1,
