@@ -8,7 +8,7 @@ class NSNet(nn.Module):
     def __init__(self):
         super().__init__()
 
-        self.linear_before = nn.Linear(256, 400)
+        self.linear_before = nn.Linear(42, 400)
 
         self.gru = nn.GRU(
             input_size=400,
@@ -19,7 +19,7 @@ class NSNet(nn.Module):
 
         self.linear_after = nn.Linear(400, 600)
         self.linear_after2 = nn.Linear(600, 600)
-        self.linear_after3 = nn.Linear(600, 256)
+        self.linear_after3 = nn.Linear(600, 42)
 
 
     def forward(self, x):

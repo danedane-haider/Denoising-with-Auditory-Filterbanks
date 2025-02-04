@@ -113,8 +113,8 @@ def main(args):
                 if FFT_INPUT:
                     target_signal_coefficients = model.specgram(target_signal)
                 else:
-                    target_signal_coefficients = model.filterbank.encoder(target_signal)
-                    enhanced_signal_coefficients = model.filterbank.encoder(enhanced_signal)
+                    target_signal_coefficients = model.filterbank(target_signal)
+                    enhanced_signal_coefficients = model.filterbank(enhanced_signal)
 
                 if KAPPA_BETA is not None:
                     # TODO: CHECK why the hybra auditory filters are not tight
@@ -160,8 +160,8 @@ def main(args):
                         if FFT_INPUT:
                             target_signal_coefficients = model.specgram(target_signal)
                         else:
-                            target_signal_coefficients = model.filterbank.encoder(target_signal)
-                            enhanced_signal_coefficients = model.filterbank.encoder(enhanced_signal)
+                            target_signal_coefficients = model.filterbank(target_signal)
+                            enhanced_signal_coefficients = model.filterbank(enhanced_signal)
 
                         if KAPPA_BETA is not None:
                             # filterbank_weights = model.filterbank.hybra_filters_real.squeeze(1) + 1j*model.filterbank.hybra_filters_imag.squeeze(1)
