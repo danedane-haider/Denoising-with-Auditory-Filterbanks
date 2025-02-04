@@ -3,6 +3,7 @@ torchaudio
 numpy==1.26.4
 scipy
 pandas
+hybra
 
 soundfile
 pesq
