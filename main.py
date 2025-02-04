@@ -14,7 +14,7 @@ from tqdm import tqdm
 
 from src.datasets import Chime2
 from src.losses import ComplexCompressedMSELoss
-from src.model import HybridfilterbankModel, FFTModel
+from src.model import AUDModel, FFTModel
 
 # set seed
 torch.manual_seed(0)
@@ -41,7 +41,7 @@ def main(args):
     if FFT_INPUT :
         model = FFTModel()
     else:
-        model = HybridfilterbankModel()
+        model = AUDModel()
 
     print(
         "Number of model parameters: ",

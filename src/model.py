@@ -2,7 +2,7 @@ import torch
 import torch.nn as nn
 from torchaudio.transforms import InverseSpectrogram, Spectrogram
 
-from hybra import HybrA
+from hybra import AudletFIR
 
 class NSNet(nn.Module):
     def __init__(self):
@@ -34,13 +34,19 @@ class NSNet(nn.Module):
 
         return x
 
-class HybridfilterbankModel(nn.Module):
+class AUDModel(nn.Module):
     def __init__(self):
         super().__init__()
 
-
+        config = {
+            "filter_len": 128,
+            "num_channels": 42,
+            "fs": 16000,
+            "Ls": 5*16000,
+            "bwmul": 1,
+        }
         self.nsnet = NSNet()
-        self.filterbank = HybrA('./filters/auditory_filters_speech.pth')
+        self.filterbank = AudletFIR(filterbank_config=config, use_decoder=True)
 
     def forward(self, x):
         x = self.filterbank(x)
