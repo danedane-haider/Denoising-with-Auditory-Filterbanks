@@ -9,7 +9,7 @@ class NSNet(nn.Module):
         super().__init__()
 
         GRU_size = 400
-        num_channels = 42
+        num_channels = 40
 
         self.linear_before = nn.Linear(num_channels, GRU_size)
 
@@ -43,7 +43,7 @@ class AUDModel(nn.Module):
 
         config = {
             "filter_len": 128,
-            "num_channels": 256,
+            "num_channels": 40,
             "fs": 16000,
             "Ls": 5*16000,
             "bwmul": 1,
