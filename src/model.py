@@ -42,7 +42,7 @@ class AUDModel(nn.Module):
         super().__init__()
 
         config = {
-            "filter_len": ,
+            "filter_len": 128,
             "num_channels": 256,
             "fs": 16000,
             "Ls": 5*16000,
